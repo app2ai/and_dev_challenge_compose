@@ -1,19 +1,24 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android.extensions'
 }
 
 android {
     compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.androiddevchallenge"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    androidExtensions {
+        experimental = true
     }
 
     signingConfigs {
@@ -38,6 +43,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        useIR = true
     }
 
     buildFeatures {
@@ -53,6 +59,7 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion '1.4.30'
     }
 
     packagingOptions {
@@ -60,6 +67,10 @@ android {
         // our test APK to build (has no effect on our AARs)
         excludes += "/META-INF/AL2.0"
         excludes += "/META-INF/LGPL2.1"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -73,6 +84,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0'
+    implementation 'dev.chrisbanes.accompanist:accompanist-coil:0.6.0'
 
     testImplementation 'junit:junit:4.13.2'
 
