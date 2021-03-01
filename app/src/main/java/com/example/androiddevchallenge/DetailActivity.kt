@@ -21,11 +21,11 @@ import com.example.androiddevchallenge.ui.theme.typography
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 class DetailActivity : AppCompatActivity() {
-    var puppy : Animal? = null
+    private var puppy : Animal? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        puppy = intent.getParcelableExtra<Animal>("PUPPY")
+        puppy = intent.getParcelableExtra("PUPPY")
         setContent {
             MyTheme {
                 DetailApp()
