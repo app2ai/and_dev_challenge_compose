@@ -33,7 +33,7 @@ import com.example.androiddevchallenge.ui.theme.typography
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 class DetailActivity : AppCompatActivity() {
-    private var puppy : Animal? = null
+    private var puppy: Animal? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,32 +46,35 @@ class DetailActivity : AppCompatActivity() {
     }
 
     @Composable
-    fun DetailApp(){
+    fun DetailApp() {
         TopBar()
     }
 
     @Composable
-    fun TopBar(){
+    fun TopBar() {
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = {
                         Row {
-                            Icon(painter = painterResource(id = R.drawable.dog_icon), contentDescription = null)
+                            Icon(
+                                painter = painterResource(id = R.drawable.dog_icon),
+                                contentDescription = null
+                            )
                             Spacer(modifier = Modifier.width(10.dp))
-                            Text(text = puppy?.nickName?:"Puppy")
+                            Text(text = puppy?.nickName ?: "Puppy")
                         }
                     },
                     elevation = 0.dp
                 )
             }
-        ){
+        ) {
             PuppyDetailCard()
         }
     }
 
     @Composable
-    fun PuppyDetailCard(){
+    fun PuppyDetailCard() {
         Surface(
             color = MaterialTheme.colors.primary,
             modifier = Modifier
@@ -109,7 +112,7 @@ class DetailActivity : AppCompatActivity() {
 
     @Composable
     @Preview
-    fun DetailPreview(){
+    fun DetailPreview() {
         DetailApp()
     }
 }

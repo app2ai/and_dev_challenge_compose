@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Composable
-    fun TopBar(){
+    fun TopBar() {
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -92,20 +92,20 @@ class MainActivity : AppCompatActivity() {
                     elevation = 0.dp
                 )
             }
-        ){
+        ) {
             DogsDataCard()
         }
     }
 
     @Composable
-    fun DogsDataCard(modifier:Modifier = Modifier){
-        var puppies : List<Animal>? = null
-        dataSourceVm.getAnimalsFromSource().observe(this){
+    fun DogsDataCard(modifier: Modifier = Modifier) {
+        var puppies: List<Animal>? = null
+        dataSourceVm.getAnimalsFromSource().observe(this) {
             puppies = it
         }
         Surface(color = MaterialTheme.colors.primary) {
-            LazyColumn{
-                items(puppies!!.size){ index->
+            LazyColumn {
+                items(puppies!!.size) { index ->
                     Card(
                         modifier = Modifier
                             .padding(16.dp)
@@ -124,13 +124,15 @@ class MainActivity : AppCompatActivity() {
                                 .fillMaxWidth()
                                 .clip(shape = RoundedCornerShape(8.dp))
                                 .background(color = Color.Yellow)
-                        ){
-                            CoilImage(data = puppies!![index].imageUrl,
+                        ) {
+                            CoilImage(
+                                data = puppies!![index].imageUrl,
                                 contentDescription = null,
                                 modifier = Modifier
                                     .height(120.dp)
                                     .width(120.dp),
-                                contentScale = ContentScale.Crop)
+                                contentScale = ContentScale.Crop
+                            )
                             Column(
                                 modifier = Modifier
                                     .padding(start = 8.dp)
